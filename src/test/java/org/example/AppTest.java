@@ -10,11 +10,7 @@ import junit.framework.TestSuite;
 public class AppTest 
     extends TestCase
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
+    LinkedInDriver linkedInDriver = new LinkedInDriver();
     public AppTest( String testName )
     {
         super( testName );
@@ -31,18 +27,16 @@ public class AppTest
     /**
      * Rigourous Test :-)
      */
-    public void testApp()
-    {
-        assertTrue( true );
-    }
 
     public void testApplyToJob()
     {
-        String jobID = "3772650869";
-        LinkedInDriver.driver = LinkedInDriver.getDriver();
-        LinkedInDriver.driver.get("https://www.linkedin.com/jobs");
-        LinkedInDriver.js = LinkedInDriver.getJS();
-        LinkedInDriver.logIn();
-        LinkedInDriver.JobPage.applyToJob(jobID);
+        String jobID = "3919859060";
+//        linkedInDriver.driver = LinkedInDriver.getDriver();
+//        linkedInDriver.driver.get("https://www.linkedin.com/jobs");
+//        linkedInDriver.js = LinkedInDriver.getJS();
+        linkedInDriver.logIn();
+        linkedInDriver.applyToJob(jobID);
+        JobsContext jobsContext = new JobsContext();
+        assertTrue(jobsContext.hasBeenAppliedTo(jobID));
     }
 }
